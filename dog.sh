@@ -832,14 +832,11 @@ format_port_list() {
         local input_formatted=$(format_bytes $input_bytes)
 
 
-        if [ "$format_type" = "display" ]; then
-            echo -e "端口:${GREEN}$port${NC} | 总流量:${GREEN}$total_formatted${NC} | 上行(入站): ${GREEN}$input_formatted${NC} | 下行(出站):${GREEN}$output_formatted${NC} | ${YELLOW}$status_label${NC}"
-        elif [ "$format_type" = "markdown" ]; then
-            result+="> 端口:**${port}** | 总流量:**${total_formatted}** | 上行:**${input_formatted}** | 下行:**${output_formatted}** | ${status_label}
-"
+elif [ "$format_type" = "markdown" ]; then
+            result+=$'\n> 端口:**'"$port"'** | 总流量:**'"$total_formatted"'** | 上行:**'"$input_formatted"'** | 下行:**'"$output_formatted"'** | '"$status_label"
         else
-            result+="
-端口:${port} | 总流量:${total_formatted} | 上行(入站): ${input_formatted} | 下行(出站):${output_formatted} | ${status_label}"
+            result+=$'\n'
+            result+="端口:$port | 总流量:$total_formatted | 上行(入站): $input_formatted | 下行(出站):$output_formatted | $status_label"
         fi
     done
 
