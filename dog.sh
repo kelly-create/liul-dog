@@ -856,12 +856,12 @@ show_main_menu() {
     local port_count=${#active_ports[@]}
     local daily_total=$(get_daily_total_traffic)
 
-    echo -e "${BLUE}=== 端口流量狗 v$SCRIPT_VERSION ===${NC}"
-    echo -e "${GREEN}介绍主页:${NC}https://zywe.de | ${GREEN}项目开源:${NC}https://github.com/zywe03/realm-xwPF"
-    echo -e "${GREEN}一只轻巧的‘守护犬’，时刻守护你的端口流量 | 快捷命令: dog${NC}"
+    echo -e "${BLUE}=== 屁桑の流量狗 v$SCRIPT_VERSION ===${NC}"
+    echo -e "${GREEN}介绍主页:${NC}https://caopi.de | ${GREEN}项目开源:${NC}https://github.com/kelly-create/liul-dog"
+    echo -e "${GREEN}叫我屁桑？有何贵干！ | 快捷命令: dog${NC}"
     echo
 
-    echo -e "${GREEN}状态: 监控中${NC} | ${BLUE}守护端口: ${port_count}个${NC} | ${YELLOW}端口总流量: $daily_total${NC}"
+    echo -e "${GREEN}状态: 监控中${NC} | ${BLUE}嗅探端口: ${port_count}个${NC} | ${YELLOW}端口总流量: $daily_total${NC}"
     echo "────────────────────────────────────────────────────────"
 
     if [ $port_count -gt 0 ]; then
