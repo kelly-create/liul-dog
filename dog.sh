@@ -27,7 +27,7 @@ readonly DOWNLOAD_SOURCES=(
 # 网络超时设置
 readonly SHORT_CONNECT_TIMEOUT=5
 readonly SHORT_MAX_TIMEOUT=7
-readonly SCRIPT_URL="readonly SCRIPT_URL="https://raw.githubusercontent.com/kelly-create/liul-dog/main/dog.sh"
+readonly SCRIPT_URL="https://raw.githubusercontent.com/kelly-create/liul-dog/main/dog.sh"
 readonly SHORTCUT_COMMAND="dog"
 
 detect_system() {
