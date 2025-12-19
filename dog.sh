@@ -4,7 +4,25 @@ set -euo pipefail
 
 readonly SCRIPT_VERSION="1.2.8"
 readonly SCRIPT_NAME="屁桑の流量狗"
-readonly SCRIPT_PATH="$(realpath "$0")"
+# --- 修复代码开始 (替换原来的第7行) ---
+readonly SCRIPT_URL="https://raw.githubusercontent.com/kelly-create/liul-dog/main/dog.sh"
+readonly INSTALL_PATH="/usr/local/bin/traffic_dog_monitor.sh"
+
+# 检测是否在管道(pipe)中运行
+if [[ "$0" == *"/fd/"* ]] || [[ "$0" == *"/proc/"* ]] || [[ ! -f "$0" ]]; then
+    # 如果是管道模式，强制下载到硬盘固定位置
+    if command -v curl >/dev/null 2>&1; then
+        curl -sL "$SCRIPT_URL" -o "$INSTALL_PATH"
+    else
+        wget -qO "$INSTALL_PATH" "$SCRIPT_URL"
+    fi
+    chmod +x "$INSTALL_PATH"
+    readonly SCRIPT_PATH="$INSTALL_PATH"
+else
+    # 如果是正常文件运行，获取当前路径
+    readonly SCRIPT_PATH="$(realpath "$0")"
+fi
+# --- 修复代码结束 ---
 readonly CONFIG_DIR="/etc/port-traffic-dog"
 readonly CONFIG_FILE="$CONFIG_DIR/config.json"
 readonly LOG_FILE="$CONFIG_DIR/logs/traffic.log"
